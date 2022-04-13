@@ -58,7 +58,6 @@ function getApi() {
     .then(data => {myCourses = data.courses; print("options")})
 }
 getApi();
-purr(myCourses)
 
 
 function golfCourse(input){
