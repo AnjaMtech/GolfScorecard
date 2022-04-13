@@ -1,18 +1,12 @@
 
 let screenMode = "options";
 let myCourses;
+let currentCourse;
 
-function log(input){
-  console.log("---")
-  console.log(input)
-}
+function print(type){
+  $("#options-container").empty();
+  if(type == "options"){
 
-function print(){
-  if(screenMode == "options"){
-    log("my courses is")
-    log(myCourses);
-    log('screenMode is options')
-    $("#options-container").empty();
     for(let i=0; i<myCourses.length; i++){
       $("#options-container").append(
         `<div class="img-box" onclick="golfCourse('${myCourses[i].name}')">
@@ -21,31 +15,62 @@ function print(){
         </div>`
       );
     }
+    $(".img-box").click(function(e){
+      purr(this.children[0].alt, "o");
+      print("table");
+    });
+  }
+  if(type == "table"){
+    $("#options-container").append(
+      `<div class="col-lg-12" id="scorecard">
+        <div class="table-responsive">
+          <table class="table table-bordered">
+          </table>
+        </div>
+        <div class="table-responsive">
+          <table class="table table-bordered">
+            <tr>
+              <th>Hole</th>
+              <td>1</td>
+            </tr>
+            <tr>
+              <th>Yardage</th>
+            </tr>
+            <tr>
+              <th>Par</th>
+            </tr>
+            <tr>
+              <th>Handicap</th>
+            </tr>
+            <tr>
+              <th>Luigi</th>
+            </tr>
+          </table>
+        </div>
+      </div>`
+    )
   }
 }
 
 function getApi() {
     return fetch('https://golf-courses-api.herokuapp.com/courses')
     .then(response => response.json())
-    .then(data => {myCourses = data.courses; print()})
+    .then(data => {myCourses = data.courses; print("options")})
 }
 getApi();
+purr(myCourses)
 
 
 function golfCourse(input){
-  log(input);
-  screenMode="scorecard";
-  print();
+  screenMode = "scorecard";
+  print("table");
 }
 
 
 window.onload = function(){
-  log("Window has loaded")
-  log(myCourses);
   // print();
   document.body.onkeypress = function(e){
     if(e.keyCode === 32){
-      log(myCourses[0].name);
       // print();
     }
   }

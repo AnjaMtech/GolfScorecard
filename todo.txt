@@ -1,0 +1,14 @@
+01. Required: Create the main scoring table with columns for each hole, out score, in score, and total score.
+02. Required: Use the golf data API to bring in the data for the golf course(s).
+03. Required: Create a row that loads yardage, handicap, and par for each hole from the course data and displays it in the table. The row should have a "total" column for the sum of all 18 holes.
+04. Required: Create a row to keep track of a player's score.
+  This row should allow users to enter their name and a score for each hole. When a user types in a score for a hole, the out, in,
+  and total columns should update
+05. Required: Add some CSS to style the card to look like an actual golf card.
+06. Required: Allow users to select which tee they will be using (Men's, Women's, Pro, Amateur, etc.). All players will play from the same tee.
+07. Required: Allow up to four players in your scorecard.
+08. Required: Minimum of 5+ commits
+09. Bonus: Your golf scorecard is responsive (mobile friendly). - 3 points
+10. Bonus: Allow the golfer to select any golf course that is available from the api. 2
+  The scorecard will show the new golf course information (par, yardage, etc.) 3 points
+11. Bonus: include ES6 Modules - 2 points
