@@ -1,4 +1,4 @@
-function printTable(players){
+function printTable(players, holes){
   $("#options-container").empty();
   $("#options-container").append(
     `<div class="col-lg-12" id="scorecard">
@@ -8,15 +8,14 @@ function printTable(players){
       </div>
       <div class="table-responsive">
         <table class="table table-bordered" id="scorecard-table">
-          <tr>
-            <th>Hole</th>
-            <td>1</td>
+          <tr id="holes">
+            <th>Holes</th>
           </tr>
           <tr>
             <th>Yardage</th>
             <td>1</td>
           </tr>
-          <tr>
+          <tr id="pars">
             <th>Par</th>
             <td>1</td>
           </tr>
@@ -28,6 +27,14 @@ function printTable(players){
       </div>
     </div>`
   );
+
+  for(let i=0; i<game.numOfHoles; i++){
+    $("#holes").append(`<td>${i+1}</td>`)
+  }
+  for(let i=0; i<game.teeBoxes.length; i++){
+    // $("#pars").append(`<td>${teeBoxes[i].par}</td>`)
+    purr(game.teeBoxes[i].par, "o");
+  }
   for(let i=0; i<players.length; i++){
     $("#scorecard-table").append(
       `<tr>
